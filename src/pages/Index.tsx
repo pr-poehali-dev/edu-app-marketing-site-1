@@ -1,143 +1,131 @@
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 
 const Index = () => {
-  const [activeFeature, setActiveFeature] = useState(0);
-
   const features = [
     {
-      icon: 'Trophy',
-      title: 'Система достижений',
-      description: 'Получайте награды за успехи в учёбе. Разблокируйте уникальные значки и показывайте свои достижения друзьям.',
-      color: 'from-purple-500 to-pink-500'
+      icon: 'BookOpen',
+      title: 'Умное обучение',
+      description: 'ИИ-алгоритмы адаптируют материал под ваш темп и стиль обучения',
+      gradient: 'from-purple-500 to-pink-500'
     },
     {
-      icon: 'Gamepad2',
-      title: 'Игровые элементы',
-      description: 'Учёба превращается в увлекательную игру. Набирайте опыт, повышайте уровень и соревнуйтесь с одноклассниками.',
-      color: 'from-cyan-500 to-blue-500'
-    },
-    {
-      icon: 'Target',
-      title: 'Ежедневные челленджи',
-      description: 'Выполняйте задания каждый день, поддерживайте серию побед и получайте бонусы за стабильность.',
-      color: 'from-orange-500 to-red-500'
-    },
-    {
-      icon: 'Zap',
-      title: 'Прогресс в реальном времени',
-      description: 'Отслеживайте свой рост, анализируйте статистику и видите результаты мгновенно.',
-      color: 'from-green-500 to-emerald-500'
-    }
-  ];
-
-  const benefits = [
-    {
-      icon: 'TrendingUp',
-      title: 'Повышение мотивации',
-      stat: '+85%',
-      description: 'Студенты занимаются на 85% чаще благодаря игровым элементам'
-    },
-    {
-      icon: 'Brain',
-      title: 'Лучшее усвоение',
-      stat: '+60%',
-      description: 'Материал запоминается на 60% эффективнее через игровой подход'
+      icon: 'Calendar',
+      title: 'Планировщик',
+      description: 'Организуйте расписание занятий, экзаменов и дедлайнов в одном месте',
+      gradient: 'from-blue-500 to-cyan-500'
     },
     {
       icon: 'Users',
-      title: 'Социальное обучение',
-      stat: '2М+',
-      description: 'Более 2 миллионов студентов учатся вместе в нашем сообществе'
+      title: 'Совместная учёба',
+      description: 'Создавайте группы, обменивайтесь конспектами и готовьтесь вместе',
+      gradient: 'from-green-500 to-emerald-500'
+    },
+    {
+      icon: 'Trophy',
+      title: 'Геймификация',
+      description: 'Зарабатывайте баллы, получайте достижения и соревнуйтесь с друзьями',
+      gradient: 'from-orange-500 to-red-500'
     }
   ];
 
-  const screenshots = [
+  const stats = [
+    { value: '500K+', label: 'Студентов' },
+    { value: '4.9★', label: 'Рейтинг' },
+    { value: '50+', label: 'Университетов' }
+  ];
+
+  const testimonials = [
     {
-      url: 'https://cdn.poehali.dev/projects/281d8671-2e4f-4ce7-bbac-fe1d49e7d7cb/files/b7864930-eb65-49ad-bc16-c38a0e0761ba.jpg',
-      title: 'Дашборд достижений'
+      name: 'Анна Петрова',
+      role: 'Студентка МГУ',
+      text: 'Это приложение изменило мой подход к учёбе. Средний балл вырос с 3.5 до 4.8!',
+      avatar: '👩‍🎓'
     },
     {
-      url: 'https://cdn.poehali.dev/projects/281d8671-2e4f-4ce7-bbac-fe1d49e7d7cb/files/fe6a6ffb-3a10-4c9f-8b22-749cc178dfd5.jpg',
-      title: 'Профиль и прогресс'
+      name: 'Дмитрий Иванов',
+      role: 'Студент МФТИ',
+      text: 'Планировщик задач и напоминания спасают меня каждую сессию. Рекомендую!',
+      avatar: '👨‍💻'
     },
     {
-      url: 'https://cdn.poehali.dev/projects/281d8671-2e4f-4ce7-bbac-fe1d49e7d7cb/files/6e51937d-dd41-4205-a853-60147f42e753.jpg',
-      title: 'Лидерборд и челленджи'
+      name: 'Мария Сидорова',
+      role: 'Студентка ВШЭ',
+      text: 'Совместная работа над проектами стала намного проще. Отличный инструмент!',
+      avatar: '👩‍🔬'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-background to-[#1a1a2e]">
-      <div className="relative overflow-hidden">
+    <div className="min-h-screen bg-background">
+      <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-border/50">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+              <Icon name="GraduationCap" className="text-white" size={24} />
+            </div>
+            <span className="text-2xl font-bold">StudyApp</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-8">
+            <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">Возможности</a>
+            <a href="#testimonials" className="text-muted-foreground hover:text-foreground transition-colors">Отзывы</a>
+            <a href="#download" className="text-muted-foreground hover:text-foreground transition-colors">Скачать</a>
+          </nav>
+          <Button className="bg-primary hover:bg-primary/90">
+            Войти
+          </Button>
+        </div>
+      </header>
+
+      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent" />
         
-        <header className="relative z-10 container mx-auto px-4 py-6 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center glow-effect">
-              <Icon name="Sparkles" className="text-white" size={24} />
-            </div>
-            <span className="text-2xl font-bold text-glow">EduQuest</span>
+        <div className="container mx-auto text-center relative z-10">
+          <div className="inline-block mb-6 px-4 py-2 rounded-full glass-effect border border-primary/30">
+            <span className="text-sm font-medium text-primary">📱 Доступно для iOS и Android</span>
           </div>
-          <Button className="glass-effect hover:glow-effect transition-all">
-            Скачать приложение
-          </Button>
-        </header>
-
-        <section className="relative z-10 container mx-auto px-4 py-20 md:py-32 text-center">
-          <div className="animate-fade-in">
-            <div className="inline-block mb-6 px-4 py-2 rounded-full glass-effect">
-              <span className="text-sm font-medium text-primary">🚀 Будущее образования уже здесь</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent animate-fade-in-up">
-              Учись играючи
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto animate-fade-in">
-              Превратите обучение в увлекательное приключение с игровыми элементами, 
-              достижениями и системой прогресса
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in">
-              <Button size="lg" className="text-lg px-8 py-6 glow-effect hover:scale-105 transition-transform">
-                <Icon name="Download" className="mr-2" size={20} />
-                Начать обучение
-              </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 glass-effect hover:glow-effect transition-all">
-                <Icon name="Play" className="mr-2" size={20} />
-                Смотреть демо
-              </Button>
-            </div>
+          
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-6 animate-fade-in-up">
+            Учись <span className="bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent">эффективнее</span>
+            <br />с StudyApp
+          </h1>
+          
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto animate-fade-in">
+            Всё для успешной учёбы в одном приложении: расписание, конспекты, 
+            планировщик задач и совместная работа с однокурсниками
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-scale-in">
+            <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 glow-effect">
+              <Icon name="Apple" className="mr-2" size={20} />
+              App Store
+            </Button>
+            <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 glow-effect">
+              <Icon name="Smartphone" className="mr-2" size={20} />
+              Google Play
+            </Button>
           </div>
 
-          <div className="mt-20 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 blur-3xl rounded-full" />
-            <div className="relative grid grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">2M+</div>
-                <div className="text-sm text-muted-foreground">Активных студентов</div>
+          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-20">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">{stat.value}</div>
+                <div className="text-sm text-muted-foreground">{stat.label}</div>
               </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-secondary mb-2">500K+</div>
-                <div className="text-sm text-muted-foreground">Достижений получено</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">95%</div>
-                <div className="text-sm text-muted-foreground">Довольных пользователей</div>
-              </div>
-            </div>
+            ))}
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
 
-      <section className="relative py-20 md:py-32">
-        <div className="container mx-auto px-4">
+      <section id="features" className="py-20 px-4">
+        <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Возможности приложения
+              Всё что нужно для учёбы
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Игровые механики и мотивационные инструменты для эффективного обучения
+              Мощные инструменты для организации учебного процесса
             </p>
           </div>
 
@@ -145,13 +133,9 @@ const Index = () => {
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className={`p-6 glass-effect cursor-pointer transition-all duration-300 hover:scale-105 ${
-                  activeFeature === index ? 'glow-effect' : ''
-                }`}
-                onMouseEnter={() => setActiveFeature(index)}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="p-6 glass-effect hover:glow-effect transition-all duration-300 hover:scale-105"
               >
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4 animate-glow`}>
+                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-4`}>
                   <Icon name={feature.icon} className="text-white" size={28} />
                 </div>
                 <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
@@ -164,122 +148,171 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="relative py-20 md:py-32 bg-gradient-to-b from-transparent to-background">
-        <div className="container mx-auto px-4">
+      <section className="py-20 px-4 bg-gradient-to-b from-transparent via-primary/5 to-transparent">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                Организуйте учёбу как профи
+              </h2>
+              <div className="space-y-6">
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Icon name="CheckCircle" className="text-primary" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Управление задачами</h3>
+                    <p className="text-muted-foreground">Создавайте списки дел, устанавливайте приоритеты и отслеживайте прогресс</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                    <Icon name="Bell" className="text-secondary" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Умные напоминания</h3>
+                    <p className="text-muted-foreground">Никогда не пропускайте важные дедлайны и занятия</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Icon name="BarChart" className="text-primary" size={24} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Аналитика прогресса</h3>
+                    <p className="text-muted-foreground">Отслеживайте успеваемость и находите точки роста</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 blur-3xl rounded-full" />
+              <img
+                src="https://cdn.poehali.dev/projects/281d8671-2e4f-4ce7-bbac-fe1d49e7d7cb/files/b7864930-eb65-49ad-bc16-c38a0e0761ba.jpg"
+                alt="App Screenshot"
+                className="relative rounded-3xl glass-effect w-full h-[600px] object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="py-20 px-4">
+        <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Преимущества
+              Что говорят студенты
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Доказанная эффективность игрового подхода к обучению
+              Присоединяйтесь к тысячам студентов, которые улучшили свою успеваемость
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="p-8 glass-effect text-center group hover:glow-effect transition-all duration-300">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mx-auto mb-6 group-hover:animate-glow">
-                  <Icon name={benefit.icon} className="text-white" size={32} />
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="p-6 glass-effect">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-2xl">
+                    {testimonial.avatar}
+                  </div>
+                  <div>
+                    <h4 className="font-bold">{testimonial.name}</h4>
+                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  </div>
                 </div>
-                <div className="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-4">
-                  {benefit.stat}
+                <p className="text-muted-foreground leading-relaxed">{testimonial.text}</p>
+                <div className="flex gap-1 mt-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Icon key={i} name="Star" className="text-yellow-500 fill-yellow-500" size={16} />
+                  ))}
                 </div>
-                <h3 className="text-2xl font-bold mb-3">{benefit.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {benefit.description}
-                </p>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative py-20 md:py-32">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Скриншоты приложения
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Посмотрите, как выглядит обучение будущего
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {screenshots.map((screenshot, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden rounded-3xl glass-effect hover:glow-effect transition-all duration-300 cursor-pointer"
-              >
-                <img
-                  src={screenshot.url}
-                  alt={screenshot.title}
-                  className="w-full h-[500px] object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-bold">{screenshot.title}</h3>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="relative py-20 md:py-32 overflow-hidden">
+      <section id="download" className="py-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 blur-3xl" />
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto relative z-10">
           <Card className="p-12 md:p-16 glass-effect glow-effect text-center">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Готовы начать своё обучающее приключение?
+              Начните учиться эффективнее уже сегодня
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Присоединяйтесь к миллионам студентов, которые уже трансформировали своё обучение
+              Скачайте приложение бесплатно и получите доступ ко всем функциям
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8 py-6 glow-effect hover:scale-105 transition-transform">
-                <Icon name="Smartphone" className="mr-2" size={20} />
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 glow-effect">
+                <Icon name="Apple" className="mr-2" size={20} />
                 Скачать для iOS
               </Button>
-              <Button size="lg" className="text-lg px-8 py-6 glow-effect hover:scale-105 transition-transform">
+              <Button size="lg" className="text-lg px-8 py-6 bg-primary hover:bg-primary/90 glow-effect">
                 <Icon name="Smartphone" className="mr-2" size={20} />
                 Скачать для Android
               </Button>
             </div>
+            <p className="text-sm text-muted-foreground">
+              ✓ Бесплатно навсегда  ✓ Без рекламы  ✓ Синхронизация между устройствами
+            </p>
           </Card>
         </div>
       </section>
 
-      <footer className="relative py-12 border-t border-border/50">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                <Icon name="Sparkles" className="text-white" size={16} />
+      <footer className="py-12 px-4 border-t border-border/50">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                  <Icon name="GraduationCap" className="text-white" size={16} />
+                </div>
+                <span className="text-lg font-bold">StudyApp</span>
               </div>
-              <span className="text-lg font-bold">EduQuest</span>
+              <p className="text-sm text-muted-foreground">
+                Лучшее приложение для организации учебного процесса
+              </p>
             </div>
-            <div className="flex gap-6 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-primary transition-colors">О нас</a>
-              <a href="#" className="hover:text-primary transition-colors">Контакты</a>
-              <a href="#" className="hover:text-primary transition-colors">Помощь</a>
-              <a href="#" className="hover:text-primary transition-colors">Политика</a>
+            <div>
+              <h4 className="font-bold mb-4">Продукт</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-foreground transition-colors">Возможности</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors">Цены</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors">FAQ</a></li>
+              </ul>
             </div>
-            <div className="flex gap-4">
-              <Button size="icon" variant="ghost" className="hover:glow-effect transition-all">
-                <Icon name="Github" size={20} />
-              </Button>
-              <Button size="icon" variant="ghost" className="hover:glow-effect transition-all">
-                <Icon name="Twitter" size={20} />
-              </Button>
-              <Button size="icon" variant="ghost" className="hover:glow-effect transition-all">
-                <Icon name="Linkedin" size={20} />
-              </Button>
+            <div>
+              <h4 className="font-bold mb-4">Компания</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-foreground transition-colors">О нас</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors">Блог</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors">Вакансии</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Поддержка</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="#" className="hover:text-foreground transition-colors">Справка</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors">Контакты</a></li>
+                <li><a href="#" className="hover:text-foreground transition-colors">Политика</a></li>
+              </ul>
             </div>
           </div>
-          <div className="mt-8 text-center text-sm text-muted-foreground">
-            © 2024 EduQuest. Все права защищены.
+          <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-muted-foreground">
+              © 2024 StudyApp. Все права защищены.
+            </p>
+            <div className="flex gap-4">
+              <Button size="icon" variant="ghost">
+                <Icon name="Twitter" size={20} />
+              </Button>
+              <Button size="icon" variant="ghost">
+                <Icon name="Facebook" size={20} />
+              </Button>
+              <Button size="icon" variant="ghost">
+                <Icon name="Instagram" size={20} />
+              </Button>
+            </div>
           </div>
         </div>
       </footer>
